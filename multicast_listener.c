@@ -26,11 +26,17 @@ int main() {
 		puts("error fd");
 		exit(0);
 	}
+	// int yes = 1;
+	if(setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, (char *)&yes, sizeof(yes))) {
+		puts("error");
+		exit(0);
+	}
 
 	if(bind(fd, (struct sockaddr *)&addr, sizeof(addr))) {
 		puts("error");
 		exit(0);
 	}
+
 
       mreq.imr_multiaddr.s_addr = inet_addr(GROUP);         
       mreq.imr_interface.s_addr = htonl(INADDR_ANY); 
