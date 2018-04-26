@@ -18,8 +18,8 @@ struct messageq
 int main() {
 	key_t key1, key2, newk;
 	int sid, rid;
-	key1 = ftok("an0ne", 32);
-	key2 = ftok("an0ne", 64);
+	key1 = ftok("an0ne", 32); //1234
+	key2 = ftok("an0ne", 64); //5678
 	printf("%d %d\n", key1, key2);
 	rid = msgget(key1, 0666 | IPC_CREAT);
 	sid = msgget(key2, 0666 | IPC_CREAT);
